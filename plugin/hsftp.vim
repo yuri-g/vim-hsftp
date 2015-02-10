@@ -58,7 +58,7 @@ function! h:DownloadFile()
 
   if has_key(conf, 'host')
     let action = printf('get %s %s', conf['remotepath'], conf['localpath'])
-    let cmd = printf('expect -c "set timeout 5; spawn sftp -P %s %s@%s; expect \"*assword:\"; send %s\r; expect \"sftp>\"; send \"%s\r\"; expect -re \"100%\"; send \"exit\r\";"', conf['port'], conf['user'], conf['host'], conf['pass'], action)
+    let cmd = printf('expect -c "set timeout 5; spawn sftp -P %s %s@%s; expect \"sftp>\"; send \"%s\r\"; expect -re \"100%\"; send \"exit\r\";"', conf['port'], conf['user'], conf['host'], action)
 
 
     if conf['confirm_download'] == 1
@@ -80,7 +80,7 @@ function! h:UploadFile()
 
   if has_key(conf, 'host')
     let action = printf('put %s %s', conf['localpath'], conf['remotepath'])
-    let cmd = printf('expect -c "set timeout 5; spawn sftp -P %s %s@%s; expect \"*assword:\"; send %s\r; expect \"sftp>\"; send \"%s\r\"; expect -re \"100%\"; send \"exit\r\";"', conf['port'], conf['user'], conf['host'], conf['pass'], action)
+    let cmd = printf('expect -c "set timeout 5; spawn sftp -P %s %s@%s; expect \"sftp>\"; send \"%s\r\"; expect -re \"100%\"; send \"exit\r\";"', conf['port'], conf['user'], conf['host'], action)
 
     if conf['confirm_upload'] == 1
       let choice = confirm('Upload file?', "&Yes\n&No", 2)
